@@ -48,7 +48,7 @@ Dataset available on the Hugging Face Hub: [maguid28/combined_financial_phraseba
 | Batch size      | 16 |
 | Epochs          | 2 |
 | Weight decay    | 0.01 |
-| Hardware        | NVIDIA A100 40 GB (single GPU) |
+| Hardware        | T4 (single GPU) |
 
 ---
 
@@ -68,7 +68,7 @@ Dataset available on the Hugging Face Hub: [maguid28/combined_financial_phraseba
   <img src="img/text_length_vs_correct_incorrect_predictions.png" alt="Length vs Error" width="380"/>
 </p>
 
-> **Insight.** With only two epochs, ModernBERT surpasses 88 % accuracy—competitive with specialised finance models while training in well under 30 min on a single A100 GPU.
+> **Insight.** With only two epochs, ModernBERT surpasses 88 % accuracy—competitive with specialised finance models while training on a single T4 GPU.
 
 ---
 
