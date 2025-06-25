@@ -27,20 +27,6 @@ Retail and institutional investors need fast, reliable sentiment signals from br
 
 ---
 
-## Quick Start
-```bash
-# 1 – Clone
-git clone https://github.com/your-org/ModernBERT_financial_sentiment.git
-cd ModernBERT_financial_sentiment
-
-# 2 – Install core deps
-pip install -r requirements.txt  # or
-pip install torch transformers datasets evaluate wandb
-
-# 3 – Run the notebook
-jupyter lab ModernBERT_Combined_Financial_Data_Sentiment.ipynb
-```
-
 ### Configuration
 Set the following environment variables (or edit the notebook cells):
 - `WANDB_API_KEY` – your Weights & Biases key
@@ -60,7 +46,7 @@ Dataset available on the Hugging Face Hub: [maguid28/combined_financial_phraseba
 |-----------------|-------|
 | Learning rate   | 2 × 10⁻⁵ |
 | Batch size      | 16 |
-| Epochs          | 3 |
+| Epochs          | 2 |
 | Weight decay    | 0.01 |
 | Hardware        | NVIDIA A100 40 GB (single GPU) |
 
@@ -82,37 +68,14 @@ Dataset available on the Hugging Face Hub: [maguid28/combined_financial_phraseba
   <img src="img/text_length_vs_correct_incorrect_predictions.png" alt="Length vs Error" width="380"/>
 </p>
 
-> **Insight.** With only two epochs, ModernBERT surpasses 88 % accuracy—competitive with specialized finance models while training in well under 30 min on a single A100 GPU.
+> **Insight.** With only two epochs, ModernBERT surpasses 88 % accuracy—competitive with specialised finance models while training in well under 30 min on a single A100 GPU.
 
 ---
 
 ## Reproducing the Experiments
-1. Install dependencies and set tokens (see *Quick Start*).
-2. Launch the notebook `ModernBERT_Combined_Financial_Data_Sentiment.ipynb`.
+1. Launch the notebook `ModernBERT_Combined_Financial_Data_Sentiment.ipynb` and install dependencies.
 3. Execute cells sequentially; metrics are logged to wandb.
-4. Checkpoint and tokenizer are saved to `outputs/` and can also be pulled directly from the Hub: [maguid28/modernbert-finetune-combined-sentiment](https://huggingface.co/maguid28/modernbert-finetune-combined-sentiment)
-
----
-
-## Inference Example
-```python
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch, torch.nn.functional as F
-
-model_id = "your-org/modernbert-financial-sentiment"
-model = AutoModelForSequenceClassification.from_pretrained(model_id)
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-
-text = "Federal Reserve signals economic outlook remains strong."
-inputs = tokenizer(text, return_tensors="pt")
-probs = F.softmax(model(**inputs).logits, dim=-1)
-print({l: float(p) for l, p in zip(['Positive', 'Neutral'], probs[0])})
-```
-
----
-
-## Contributing
-Pull requests and issues are welcome.  Please run `pre-commit` hooks and include unit tests when adding new functionality.
+4. Checkpoint and tokenizer are saved to `outputs/`. They can also be pulled directly from Huggingface: [maguid28/modernbert-finetune-combined-sentiment](https://huggingface.co/maguid28/modernbert-finetune-combined-sentiment)
 
 ---
 
@@ -124,4 +87,3 @@ Pull requests and issues are welcome.  Please run `pre-commit` hooks and include
 ## Acknowledgments
 - [Hugging Face Transformers](https://github.com/huggingface/transformers)
 - [Weights & Biases](https://wandb.ai)
-- Financial NLP research community
