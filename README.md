@@ -35,7 +35,7 @@ Set the following environment variables (or edit the notebook cells):
 ---
 
 ## Dataset
-A blended corpus of financial-news headlines, earnings-call snippets, and social-media commentary (≈120 k sentences).  Labels: **Positive**, **Neutral**, **Negative**.
+A blended corpus of financial-news headlines, earnings-call snippets, and social-media commentary (≈17 k sentences).  Labels: **Positive**, **Neutral**, **Negative**.
 
 Dataset available on the Hugging Face Hub: [maguid28/combined_financial_phrasebank_twitter_news_sentiment](https://huggingface.co/datasets/maguid28/combined_financial_phrasebank_twitter_news_sentiment)
 
